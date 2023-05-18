@@ -4,7 +4,7 @@ import Rain from '../../img/raining.png';
 import Res from '../../img/1.png';
 import Clear from '../../img/sun.png';
 import windPower from '../../img/wind-power.png';
-// import serchBtn from '../../img/search.png';
+import serchBtn from '../../img/search.png';
 import Clouds from '../../img/clouds.png';
 import Drizzle from '../../img/drizzle.png';
 import Mist from '../../img/haze.png';
@@ -19,8 +19,11 @@ const WeatherScrean = () => {
     const [icons, setIcons] = useState();
     let [cyti, setCyti] = useState('kyiv');
 
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => setCyti(data.cityName);
+    const { register, reset, handleSubmit } = useForm();
+    const onSubmit = (data) => {
+        setCyti(data.cityName);
+        reset();
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +41,7 @@ const WeatherScrean = () => {
                     <div className={styles.serch}>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <input {...register('cityName', { required: true })} />
-                            <input className={styles.serchBtn} type="submit" />
+                            <input className={styles.serchBtn} type='image' src={serchBtn} alt='Submit' />
                         </form>
                     </div>
                     <div className={styles.images}>

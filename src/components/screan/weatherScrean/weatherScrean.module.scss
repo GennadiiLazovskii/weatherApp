@@ -12,11 +12,17 @@
     align-items: center;
     justify-content: space-between;
 
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 
     .serchBtn {
         width: 40px;
         height: 40px;
-        border-radius: 50%;
+        border-radius: 45%;
         border: none;
         outline: none;
         cursor: pointer;
@@ -41,12 +47,12 @@
         outline: none;
         background: #ebfffc;
         color: #555;
-        padding: 10px 25px;
+        padding: 16px 16px;
         height: 20px;
         border-radius: 30px;
         flex: 1;
         margin-right: 16px;
-        font-size: 18px;
+        font-size: 24px;
     }
 }
 
