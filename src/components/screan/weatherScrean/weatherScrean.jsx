@@ -4,6 +4,7 @@ import humidity from '../../img/humidity.png';
 // import snow from '../../img/snow.png';
 import sun from '../../img/sun.png';
 import windPower from '../../img/wind-power.png';
+import serchBtn from '../../img/search.png';
 
 const WeatherScrean = () => {
 
@@ -12,7 +13,9 @@ const WeatherScrean = () => {
             <div>
                 <div className={styles.serch}>
                     <input type="text" />
-                    <button></button>
+                    <button>
+                        <img src={serchBtn} alt="serch" />
+                    </button>
                 </div>
                 <div className={styles.images}>
                     <img src={sun} alt="sun" />
