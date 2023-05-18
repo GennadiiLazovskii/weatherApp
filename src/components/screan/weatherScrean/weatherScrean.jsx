@@ -11,6 +11,7 @@ import Mist from '../../img/haze.png';
 import { useEffect, useState } from 'react';
 import WetherService from '../../service/weather.service';
 import { useForm } from 'react-hook-form';
+import Loader from '../loader/Loader';
 
 const WeatherScrean = () => {
 
@@ -73,7 +74,7 @@ const WeatherScrean = () => {
                     </div>
                 </div>
             ) : (
-                <p>Loading...</p>
+                <Loader/>
             )}
         </div>
     );
