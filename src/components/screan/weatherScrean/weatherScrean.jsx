@@ -4,47 +4,49 @@ import Rain from '../../img/raining.png';
 import Res from '../../img/1.png';
 import Clear from '../../img/sun.png';
 import windPower from '../../img/wind-power.png';
-import serchBtn from '../../img/search.png';
+// import serchBtn from '../../img/search.png';
 import Clouds from '../../img/clouds.png';
 import Drizzle from '../../img/drizzle.png';
 import Mist from '../../img/haze.png';
 import { useEffect, useState } from 'react';
-import WetherService from '../../../../../../appTest/vite-project/src/components/service/wether.service';
+import WetherService from '../../service/weather.service';
+import { useForm } from 'react-hook-form';
 
 const WeatherScrean = () => {
 
     const [weather, setWeather] = useState();
     const [icons, setIcons] = useState();
+    let [cyti, setCyti] = useState('kyiv');
 
-    // console.log(icons)
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => setCyti(data.cityName);
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await WetherService.getAll()
+            const response = await WetherService.getAll(cyti)
             setWeather(response)
             setIcons(response.weather[0].main)
         }
         fetchData();
-    }, [])
+    }, [cyti])
 
     return (
         <div className={styles.wrapper}>
             {weather !== undefined ? (
                 <div>
                     <div className={styles.serch}>
-                        <input type="text" />
-                        <button>
-                            <img src={serchBtn} alt="serch" />
-                        </button>
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <input {...register('cityName', { required: true })} />
+                            <input className={styles.serchBtn} type="submit" />
+                        </form>
                     </div>
                     <div className={styles.images}>
                         {
-                            (icons == "Clouds") ? (<img src={Clouds} alt='Clouds'/>) :
-                            (icons == "Clear") ? (<img src={Clear} alt='Clear'/>) :
-                            (icons == "Rain") ? (<img src={Rain} alt='Rain'/>) :
-                            (icons == "Drizzle") ? (<img src={Drizzle} alt='Drizzle'/>) :
-                            (icons == "Mist") ? (<img src={Mist} alt='Mist'/>): <img src={Res} alt='res'/>
-                            
+                            (icons == "Clouds") ? (<img src={Clouds} alt='Clouds' />) :
+                                (icons == "Clear") ? (<img src={Clear} alt='Clear' />) :
+                                    (icons == "Rain") ? (<img src={Rain} alt='Rain' />) :
+                                        (icons == "Drizzle") ? (<img src={Drizzle} alt='Drizzle' />) :
+                                            (icons == "Mist") ? (<img src={Mist} alt='Mist' />) : <img src={Res} alt='res' />
                         }
                     </div>
                     <div className={styles.degrees}>
