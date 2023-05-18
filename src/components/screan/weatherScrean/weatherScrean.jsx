@@ -1,22 +1,28 @@
 import styles from './weatherScrean.module.scss';
 import humidity from '../../img/humidity.png';
-// import raining from '../../img/raining.png';
-// import snow from '../../img/snow.png';
-import sun from '../../img/sun.png';
+import Rain from '../../img/raining.png';
+import Res from '../../img/1.png';
+import Clear from '../../img/sun.png';
 import windPower from '../../img/wind-power.png';
 import serchBtn from '../../img/search.png';
+import Clouds from '../../img/clouds.png';
+import Drizzle from '../../img/drizzle.png';
+import Mist from '../../img/haze.png';
 import { useEffect, useState } from 'react';
 import WetherService from '../../../../../../appTest/vite-project/src/components/service/wether.service';
 
 const WeatherScrean = () => {
 
     const [weather, setWeather] = useState();
-    // console.log(weather)
+    const [icons, setIcons] = useState();
+
+    // console.log(icons)
 
     useEffect(() => {
         const fetchData = async () => {
             const response = await WetherService.getAll()
             setWeather(response)
+            setIcons(response.weather[0].main)
         }
         fetchData();
     }, [])
@@ -32,7 +38,14 @@ const WeatherScrean = () => {
                         </button>
                     </div>
                     <div className={styles.images}>
-                        <img src={sun} alt="sun" />
+                        {
+                            (icons == "Clouds") ? (<img src={Clouds} alt='Clouds'/>) :
+                            (icons == "Clear") ? (<img src={Clear} alt='Clear'/>) :
+                            (icons == "Rain") ? (<img src={Rain} alt='Rain'/>) :
+                            (icons == "Drizzle") ? (<img src={Drizzle} alt='Drizzle'/>) :
+                            (icons == "Mist") ? (<img src={Mist} alt='Mist'/>): <img src={Res} alt='res'/>
+                            
+                        }
                     </div>
                     <div className={styles.degrees}>
                         <p>{Math.round(weather.main.temp)} °C</p>
