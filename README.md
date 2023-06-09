@@ -25,10 +25,9 @@ APIs Used
 - Weather API: [https://openweathermap.org/api]
 
 Installation:
+To install and run the weather-project locally, follow these steps:
 
-To install and run the Corporate-app locally, follow these steps:
-
-Clone the repository: git clone [repository URL]
-Navigate to the project directory: cd weather-project
-Install dependencies: npm install
-Start the development server: npm run dev
+- Clone the repository: git clone [repository URL]
+- Navigate to the project directory: cd weather-project
+- Install dependencies: npm install
+- Start the development server: npm run dev
