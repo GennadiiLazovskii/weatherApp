@@ -12,3 +12,23 @@ Screenshots
 
 ![screenshots 1](src/components/img/screenshots/screenshots1.png)
 ![screenshots 2](src/components/img/screenshots/screenshots2.png)
+
+Technologies Used
+
+- HTML
+- SCSS
+- JavaScript
+- React
+
+APIs Used
+
+- Weather API: [https://openweathermap.org/api]
+
+Installation:
+
+To install and run the Corporate-app locally, follow these steps:
+
+Clone the repository: git clone [repository URL]
+Navigate to the project directory: cd weather-project
+Install dependencies: npm install
+Start the development server: npm run dev
